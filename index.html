@@ -168,6 +168,62 @@
       transform: translateY(-2px);
     }
 
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 999px;
+      padding: 4px 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      color: #b0907a;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+
+    .lang-btn.active {
+      color: #3d1f0e;
+    }
+
+    .lang-sep {
+      color: #d0b0a0;
+      font-size: 0.8rem;
+      user-select: none;
+    }
+
+    /* ── COMING SOON BADGE ── */
+    .coming-soon-badge {
+      display: inline-block;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #b06030;
+      background: #fff4e6;
+      border: 1px solid #f0c090;
+      border-radius: 999px;
+      padding: 3px 12px;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .banner {
@@ -210,12 +266,18 @@
 </head>
 <body>
 
+  <div class="lang-switcher">
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+    <span class="lang-sep">|</span>
+    <button onclick="setLang('sv')" id="btn-sv" class="lang-btn">SV</button>
+  </div>
+
   <header class="banner">
     <div class="banner-inner">
       <img src="src/fort.png" alt="Fortalis" class="banner-logo" />
       <div class="banner-text">
         <h1>Fortalis Development</h1>
-        <p>making life easier using data</p>
+        <p data-i18n="tagline">making life easier using data</p>
       </div>
     </div>
   </header>
@@ -224,13 +286,8 @@
     <div class="card">
       <div class="card-text">
         <h2>My Balance</h2>
-        <p>
-          Build your own custom widgets to make life more simple. The data is combined with
-          your drive (current mental wellbeing) and you will get a Balance Score for every
-          day and every minute. The data is secure on your phone &mdash; but can be uploaded
-          to your Google Drive automatically, or easily shared with your friends, family,
-          doctor or therapist.
-        </p>
+        <p class="coming-soon-badge" data-i18n="coming-soon">App coming soon</p>
+        <p data-i18n="card-desc">Build your own custom widgets to make life more simple. The data is combined with your drive (current mental wellbeing) and you will get a Balance Score for every day and every minute. The data is secure on your phone — but can be uploaded to your Google Drive automatically, or easily shared with your friends, family, doctor or therapist.</p>
       </div>
       <div class="card-icon">
         <a href="mybalance.html">
@@ -241,12 +298,41 @@
   </main>
 
   <footer class="footer-actions">
-    <a href="mailto:fortalis@proton.me" class="btn-contact">✉ Contact</a>
-    <a href="https://buymeacoffee.com/fortalis" target="_blank" rel="noopener noreferrer" class="btn-coffee">
-      ☕ Buy me a coffee
-    </a>
-    <a href="privacy.html" class="btn-contact" style="font-size: 0.85rem;">Privacy Policy</a>
+    <a href="mailto:fortalis@proton.me" class="btn-contact" data-i18n="btn-contact">✉ Contact</a>
+    <a href="https://buymeacoffee.com/fortalis" target="_blank" rel="noopener noreferrer" class="btn-coffee" data-i18n="btn-coffee">☕ Buy me a coffee</a>
   </footer>
+
+  <script>
+    const i18n = {
+      en: {
+        tagline: 'making life easier using data',
+        'card-desc': 'Build your own custom widgets to make life more simple. The data is combined with your drive (current mental wellbeing) and you will get a Balance Score for every day and every minute. The data is secure on your phone — but can be uploaded to your Google Drive automatically, or easily shared with your friends, family, doctor or therapist.',
+        'coming-soon': 'App coming soon',
+        'btn-contact': '✉ Contact',
+        'btn-coffee': '☕ Buy me a coffee',
+      },
+      sv: {
+        tagline: 'gör livet enklare med data',
+        'card-desc': 'Bygg egna anpassade widgets för att förenkla vardagen. Datan kombineras med din drive (aktuellt mentalt välmående) och du får ett Balance Score för varje dag och varje minut. Datan är säker på din telefon — men kan laddas upp till Google Drive automatiskt eller enkelt delas med vänner, familj, läkare eller terapeut.',
+        'coming-soon': 'App kommer snart',
+        'btn-contact': '✉ Kontakt',
+        'btn-coffee': '☕ Bjud mig på kaffe',
+      }
+    };
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-sv').classList.toggle('active', lang === 'sv');
+      document.documentElement.lang = lang;
+    }
+
+    setLang(localStorage.getItem('lang') || 'en');
+  </script>
 
 </body>
 </html>

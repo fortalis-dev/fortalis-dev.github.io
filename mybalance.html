@@ -120,6 +120,46 @@
       margin-top: 32px;
     }
 
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 999px;
+      padding: 4px 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      color: #b0907a;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+
+    .lang-btn.active {
+      color: #3d1f0e;
+    }
+
+    .lang-sep {
+      color: #d0b0a0;
+      font-size: 0.8rem;
+      user-select: none;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .banner {
@@ -152,6 +192,12 @@
 </head>
 <body>
 
+  <div class="lang-switcher">
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+    <span class="lang-sep">|</span>
+    <button onclick="setLang('sv')" id="btn-sv" class="lang-btn">SV</button>
+  </div>
+
   <header class="banner">
     <div class="banner-inner">
       <div class="banner-logo-wrap">
@@ -159,45 +205,97 @@
       </div>
       <div class="banner-text">
         <h1>My Balance</h1>
-        <p>visualize your mental health</p>
+        <p data-i18n="page-tagline">visualize your mental health</p>
       </div>
     </div>
   </header>
 
   <main class="content">
-    <h2>Getting started</h2>
-    <p>
+    <h2 data-i18n="h-getting-started">Getting started</h2>
+    <p data-i18n="p-getting-started">
       My Balance helps you track your mental wellbeing over time by combining your own
       custom data widgets with a daily drive score. The result is a personalised Balance
       Score that shows you how you're really doing — day by day and minute by minute.
     </p>
 
-    <h2>Your data stays on your phone</h2>
-    <p>
+    <h2 data-i18n="h-data-stays">Your data stays on your phone</h2>
+    <p data-i18n="p-data-stays">
       Everything is stored locally on your device. You can choose to back it up automatically
       to Google Drive, or share a snapshot directly with a friend, family member, doctor
       or therapist whenever you'd like to.
     </p>
 
-    <h2>How to use widgets</h2>
+    <h2 data-i18n="h-how-to-use">How to use widgets</h2>
     <ul>
-      <li>Open My Balance and tap <strong>+</strong> to add a new widget.</li>
-      <li>Pick the type of data you want to track (mood, sleep, activity, …).</li>
-      <li>Log your values throughout the day — as often or rarely as you like.</li>
-      <li>Your Balance Score updates automatically as you log.</li>
+      <li data-i18n-html="li-1">Open My Balance and tap <strong>+</strong> to add a new widget.</li>
+      <li data-i18n-html="li-2">Pick the type of data you want to track (mood, sleep, activity, …).</li>
+      <li data-i18n-html="li-3">Log your values throughout the day — as often or rarely as you like.</li>
+      <li data-i18n-html="li-4">Your Balance Score updates automatically as you log.</li>
     </ul>
 
-    <h2>Reading your Balance Score</h2>
-    <p>
+    <h2 data-i18n="h-reading">Reading your Balance Score</h2>
+    <p data-i18n="p-reading">
       The score combines your widget data with your current drive level. A higher score
       means your tracked factors are aligned with how you're feeling. Use the timeline
       view to spot patterns over days, weeks or months.
     </p>
 
-    <div class="placeholder-notice">
+    <div class="placeholder-notice" data-i18n="p-placeholder">
       More detailed how-to content coming soon.
     </div>
   </main>
+
+  <script>
+    const i18n = {
+      en: {
+        'page-tagline': 'visualize your mental health',
+        'h-getting-started': 'Getting started',
+        'p-getting-started': "My Balance helps you track your mental wellbeing over time by combining your own custom data widgets with a daily drive score. The result is a personalised Balance Score that shows you how you're really doing — day by day and minute by minute.",
+        'h-data-stays': 'Your data stays on your phone',
+        'p-data-stays': "Everything is stored locally on your device. You can choose to back it up automatically to Google Drive, or share a snapshot directly with a friend, family member, doctor or therapist whenever you'd like to.",
+        'h-how-to-use': 'How to use widgets',
+        'li-1': 'Open My Balance and tap <strong>+</strong> to add a new widget.',
+        'li-2': 'Pick the type of data you want to track (mood, sleep, activity, …).',
+        'li-3': 'Log your values throughout the day — as often or rarely as you like.',
+        'li-4': 'Your Balance Score updates automatically as you log.',
+        'h-reading': 'Reading your Balance Score',
+        'p-reading': "The score combines your widget data with your current drive level. A higher score means your tracked factors are aligned with how you're feeling. Use the timeline view to spot patterns over days, weeks or months.",
+        'p-placeholder': 'More detailed how-to content coming soon.',
+      },
+      sv: {
+        'page-tagline': 'visualisera din mentala hälsa',
+        'h-getting-started': 'Kom igång',
+        'p-getting-started': 'My Balance hjälper dig att följa ditt mentala välmående över tid genom att kombinera egna anpassade widgets med ett dagligt drive-värde. Resultatet är ett personligt Balance Score som visar hur du faktiskt mår — dag för dag och minut för minut.',
+        'h-data-stays': 'Din data stannar på din telefon',
+        'p-data-stays': 'Allt lagras lokalt på din enhet. Du kan välja att automatiskt säkerhetskopiera till Google Drive, eller dela en ögonblicksbild direkt med en vän, familjemedlem, läkare eller terapeut när du vill.',
+        'h-how-to-use': 'Så använder du widgets',
+        'li-1': 'Öppna My Balance och tryck på <strong>+</strong> för att lägga till en ny widget.',
+        'li-2': 'Välj vilken typ av data du vill spåra (humör, sömn, aktivitet, …).',
+        'li-3': 'Logga dina värden under dagen — så ofta eller sällan du vill.',
+        'li-4': 'Ditt Balance Score uppdateras automatiskt när du loggar.',
+        'h-reading': 'Förstå ditt Balance Score',
+        'p-reading': 'Poängen kombinerar dina widget-data med din aktuella drive-nivå. Ett högre poäng innebär att dina spårade faktorer stämmer överens med hur du känner dig. Använd tidslinjevyn för att hitta mönster över dagar, veckor eller månader.',
+        'p-placeholder': 'Mer detaljerat innehåll kommer snart.',
+      }
+    };
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-sv').classList.toggle('active', lang === 'sv');
+      document.documentElement.lang = lang;
+    }
+
+    setLang(localStorage.getItem('lang') || 'en');
+  </script>
 
 </body>
 </html>
