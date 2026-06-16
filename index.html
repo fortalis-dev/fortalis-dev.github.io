@@ -88,6 +88,7 @@
       display: block;
       text-decoration: none;
       color: inherit;
+      cursor: pointer;
     }
 
     .card {
@@ -232,18 +233,27 @@
 
     /* ── COMING SOON BADGE ── */
     .coming-soon-badge {
-      display: inline-block;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #b06030;
-      background: #fff4e6;
-      border: 1px solid #f0c090;
+      letter-spacing: 0.2px;
+      text-transform: none;
+      font-family: inherit;
+      color: #1f3a5d;
+      background: #e8f0ff;
+      border: 1px solid #b8d2ff;
       border-radius: 999px;
-      padding: 3px 12px;
+      padding: 12px 20px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .coming-soon-badge:hover {
+      background: #d2e3ff;
+      transform: translateY(-1px);
     }
 
     /* ── RESPONSIVE ── */
@@ -305,18 +315,16 @@
   </header>
 
   <main class="card-wrapper">
-    <a href="mybalance.html" class="card-link">
-      <div class="card">
-        <div class="card-text">
-          <h2>My Balance</h2>
-          <p class="coming-soon-badge" data-i18n="coming-soon">App coming soon</p>
-          <p data-i18n="card-desc">Build your own custom widgets to make life more simple. The data is combined with your drive (current mental wellbeing) and you will get a Balance Score for every day and every minute. The data is secure on your phone — but can be uploaded to your Google Drive automatically, or easily shared with your friends, family, doctor or therapist.</p>
-        </div>
-        <div class="card-icon">
-          <img src="src/bipd.png" alt="My Balance app icon" />
-        </div>
+    <div class="card card-link" onclick="window.location.href='mybalance.html'">
+      <div class="card-text">
+        <h2>My Balance</h2>
+        <a href="https://play.google.com/store/apps/details?id=com.bipolar.balance" target="_blank" rel="noopener noreferrer" class="coming-soon-badge" onclick="event.stopPropagation()">Join beta now</a>
+        <p data-i18n="card-desc">Build your own custom widgets to make life more simple. The data is combined with your drive (current mental wellbeing) and you will get a Balance Score for every day and every minute. The data is secure on your phone — but can be uploaded to your Google Drive automatically, or easily shared with your friends, family, doctor or therapist.</p>
       </div>
-    </a>
+      <div class="card-icon">
+        <img src="src/bipd.png" alt="My Balance app icon" />
+      </div>
+    </div>
   </main>
 
   <footer class="footer-actions">

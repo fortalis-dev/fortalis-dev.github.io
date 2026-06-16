@@ -22,8 +22,15 @@
       background: #1d3557;
       color: #f8f9fa;
       text-align: center;
-      padding: 12px 18px;
-      font-size: 0.98rem;
+      padding: 18px 22px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      font-family: inherit;
+    }
+
+    .beta-banner a {
+      color: #f8f9fa;
+      text-decoration: underline;
       font-weight: 700;
     }
 
@@ -34,6 +41,26 @@
 
     .beta-banner a:hover {
       color: #a8dadc;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 16px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.92);
+      color: #3d1f0e;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid rgba(61,31,14,0.12);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-back:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
     }
 
     /* ── BANNER ── */
@@ -211,7 +238,7 @@
 </head>
 <body>
   <div class="beta-banner">
-    Join beta testing now — <a href="https://play.google.com/store/apps/details?id=com.bipolar.balance" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
+    Join the beta now — <a href="https://play.google.com/store/apps/details?id=com.bipolar.balance" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
   </div>
   <div class="lang-switcher">
     <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
@@ -227,13 +254,10 @@
       <div class="banner-text">
         <h1>My Balance</h1>
         <p data-i18n="page-tagline">Track energy, rest and mood with clarity</p>
+        <a href="index.html" class="btn-back">← Back</a>
       </div>
     </div>
   </header>
-
-  <div class="beta-banner">
-    Join beta testing now — <a href="https://play.google.com/store/apps/details?id=com.bipolar.balance" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
-  </div>
 
   <main class="content">
     <h2>Why My Balance exists</h2>
