@@ -17,6 +17,25 @@
       color: #2c2c2c;
     }
 
+    .beta-banner {
+      width: 100%;
+      background: #1d3557;
+      color: #f8f9fa;
+      text-align: center;
+      padding: 12px 18px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .beta-banner a {
+      color: #f8f9fa;
+      text-decoration: underline;
+    }
+
+    .beta-banner a:hover {
+      color: #a8dadc;
+    }
+
     /* ── BANNER ── */
     .banner {
       width: 100%;
@@ -265,7 +284,9 @@
   </style>
 </head>
 <body>
-
+  <div class="beta-banner">
+    Join beta testing now — <a href="https://play.google.com/store/apps/details?id=com.bipolar.balance" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
+  </div>
   <div class="lang-switcher">
     <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
     <span class="lang-sep">|</span>
