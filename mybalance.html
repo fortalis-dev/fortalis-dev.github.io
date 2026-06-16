@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Balance – How to use</title>
+  <title>My Balance – App Overview</title>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -15,6 +15,25 @@
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: #ffffff;
       color: #2c2c2c;
+    }
+
+    .beta-banner {
+      width: 100%;
+      background: #1d3557;
+      color: #f8f9fa;
+      text-align: center;
+      padding: 12px 18px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .beta-banner a {
+      color: #f8f9fa;
+      text-decoration: underline;
+    }
+
+    .beta-banner a:hover {
+      color: #a8dadc;
     }
 
     /* ── BANNER ── */
@@ -191,7 +210,9 @@
   </style>
 </head>
 <body>
-
+  <div class="beta-banner">
+    Join beta testing now — <a href="https://play.google.com/store/apps/details?id=com.bipolar.balance" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
+  </div>
   <div class="lang-switcher">
     <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
     <span class="lang-sep">|</span>
@@ -211,36 +232,30 @@
   </header>
 
   <main class="content">
-    <h2 data-i18n="h-getting-started">Getting started</h2>
-    <p data-i18n="p-getting-started">
-      My Balance helps you track your mental wellbeing over time by combining your own
-      custom data widgets with a daily drive score. The result is a personalised Balance
-      Score that shows you how you're really doing — day by day and minute by minute.
-    </p>
+    <h2>My Balance app overview</h2>
+    <p>My Balance is a specialized tool for tracking energy levels, rest duration, and custom daily metrics to help manage bipolar balance.</p>
+    <p><strong>Package:</strong> com.bipolar.balance</p>
 
-    <h2 data-i18n="h-data-stays">Your data stays on your phone</h2>
-    <p data-i18n="p-data-stays">
-      Everything is stored locally on your device. You can choose to back it up automatically
-      to Google Drive, or share a snapshot directly with a friend, family member, doctor
-      or therapist whenever you'd like to.
-    </p>
-
-    <h2 data-i18n="h-how-to-use">How to use widgets</h2>
+    <h2>Core concepts</h2>
     <ul>
-      <li data-i18n-html="li-1">Open My Balance and tap <strong>+</strong> to add a new widget.</li>
-      <li data-i18n-html="li-2">Pick the type of data you want to track (mood, sleep, activity, …).</li>
-      <li data-i18n-html="li-3">Log your values throughout the day — as often or rarely as you like.</li>
-      <li data-i18n-html="li-4">Your Balance Score updates automatically as you log.</li>
+      <li><strong>Drive Level</strong> measures your current energy state from 1 (very low) to 7 (very high).</li>
+      <li><strong>Suspend</strong> tracks total rest or paused time across the logical day.</li>
+      <li><strong>Logical day</strong> starts at 10:00 AM to keep sleep cycles and daily insights aligned.</li>
     </ul>
 
-    <h2 data-i18n="h-reading">Reading your Balance Score</h2>
-    <p data-i18n="p-reading">
-      The score combines your widget data with your current drive level. A higher score
-      means your tracked factors are aligned with how you're feeling. Use the timeline
-      view to spot patterns over days, weeks or months.
-    </p>
+    <h2>Main features</h2>
+    <ul>
+      <li>Daily Balance Score based on average Drive and your tracked data.</li>
+      <li>Real-time Drive logging with a thermometer-style input.</li>
+      <li>Custom data points for yes/no answers, scales, counters, and personal metrics.</li>
+      <li>Sleep/rest trend tracking and correlation analysis over multiple days.</li>
+      <li>Secure local storage with optional Google Drive backup.</li>
+    </ul>
 
-    <div class="placeholder-notice" data-i18n="p-placeholder">
+    <h2>Why it helps</h2>
+    <p>My Balance makes fluctuation visible so you can spot patterns, track recovery and share useful insights when needed.</p>
+
+    <div class="placeholder-notice">
       More detailed how-to content coming soon.
     </div>
   </main>
@@ -248,7 +263,7 @@
   <script>
     const i18n = {
       en: {
-        'page-tagline': 'visualize your mental health',
+        'page-tagline': 'manage bipolar balance with energy and rest tracking',
         'h-getting-started': 'Getting started',
         'p-getting-started': "My Balance helps you track your mental wellbeing over time by combining your own custom data widgets with a daily drive score. The result is a personalised Balance Score that shows you how you're really doing — day by day and minute by minute.",
         'h-data-stays': 'Your data stays on your phone',
@@ -263,7 +278,7 @@
         'p-placeholder': 'More detailed how-to content coming soon.',
       },
       sv: {
-        'page-tagline': 'visualisera din mentala hälsa',
+        'page-tagline': 'spåra din energi och vila för bättre balans',
         'h-getting-started': 'Kom igång',
         'p-getting-started': 'My Balance hjälper dig att följa ditt mentala välmående över tid genom att kombinera egna anpassade widgets med ett dagligt drive-värde. Resultatet är ett personligt Balance Score som visar hur du faktiskt mår — dag för dag och minut för minut.',
         'h-data-stays': 'Din data stannar på din telefon',
